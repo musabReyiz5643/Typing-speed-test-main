@@ -1,94 +1,162 @@
-# SpeedType - Keyboard Typing Test Platform
+# Frontend Mentor - Typing Speed Test
 
-SpeedType, modern front-end mimarisi ve temiz kod prensipleriyle geliştirilmiş; kullanıcıların yazma hızlarını, doğruluk (accuracy) oranlarını ve WPM (Words Per Minute) değerlerini farklı zorluk dereceleri ve modlarda test etmelerini sağlayan gelişmiş, mobile-first bir web uygulamasıdır.
+![Design preview for the Typing Speed Test coding challenge](./preview.jpg)
 
----
+## Welcome! 👋
 
-## 🚀 Teknolojiler & Kütüphaneler
+Thanks for checking out this front-end coding challenge.
 
-- **Framework:** React + Vite + TypeScript
-- **Styling:** Tailwindcss v4 (Yeni nesil derleme ve CSS tabanlı konfigürasyon)
-- **State Management:** Zustand (Performanslı ve minimal global state yönetimi)
-- **Data Fetching:** TanStack Query v5 (React Query ile `data.json` yönetimi)
-- **Animation:** Framer Motion (Akıcı state geçişleri ve modern mikro etkileşimler)
-- **Typography:** `@fontsource/sora` (400, 600, 700 weight seçenekleriyle)
+[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
 
----
+**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
 
-## 🛠️ Sistem Mimarisi & Klasör Yapısı
+## The challenge
 
-Proje, ölçeklenebilir ve bakımı kolay **Feature-Driven (Feature-Based) Design** desenine göre yapılandırılması gerekir. Her büyük özellik kendi klasörü altında bağımsız bir dünya olarak yaşar.
+Your challenge is to build out this typing speed test app and get it looking as close to the design as possible.
 
-Eğerki tekrar eden ve diğer features'larda lazım olan _componentları_ veya _hooks_ gibi klasörleri **shared** klasörü içine koyulması gerekir.
+You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
 
----
+We store the passage data in a local `data.json` file. You can use that to randomly select passages of varying difficulty.
 
-## 🎮 Özellikler ve Oyun Modları
+Your users should be able to:
 
-### 1. Zorluk Seviyeleri (Difficulty)
+#### Test Controls
 
-- **Easy:** Kısa ve basit kelimeler içeren metinler.
-- **Medium:** Noktalama işaretleri içeren standart metinler.
-- **Hard:** Sayılar, semboller ve karmaşık kelimeler içeren zorlayıcı metinler.
+- Start a test by clicking the start button or by clicking the passage and typing
+- Select a difficulty level (Easy, Medium, Hard) for passages of varying complexity
+- Switch between "Timed (60s)" mode and "Passage" mode (timer counts up, no limit)
+- Restart at any time to get a new random passage from the selected difficulty
 
-### 2. Mod Seçenekleri (Mode)
+#### Typing Experience
 
-- **Timed (60s):** Geri sayım mantığıyla çalışır. Süre `0:60`'tan geriye sayar. Süre bittiğinde veya metin erken tamamlandığında test otomatik sonlanır.
-- **Passage:** Zamana karşı değil, metnin tamamını bitirmeye odaklıdır. Kronometre `0:00`'dan ileriye sayar. Kullanıcı metni tamamen bitirdiği an test sonlanır.
+- See real-time WPM, accuracy, and time stats while typing
+- See visual feedback showing correct characters (green), errors (red/underlined), and cursor position
+- Correct mistakes with backspace (original errors still count against accuracy)
 
-### 3. Dinamik Renklendirme Kuralları
+#### Results & Progress
 
-- **Doğru Karakter:** Yeşil (`text-green-500` / `text-success`)
-- **Hatalı Karakter:** Kırmızı ve Altı Çizili (`text-red-500 underline decoration-red-500`)
-- **Aktif Karakter:** Arka planı hafif gri / imleç odağı (`bg-gray-200/50`)
-- **Yazılmamış Karakter:** Standart soluk gri (`text-gray-400` / `text-muted`)
+- View results showing WPM, accuracy, and characters (correct/incorrect) after completing a test
+- See a "Baseline Established!" message on their first test, setting their personal best
+- See a "High Score Smashed!" celebration with confetti when beating their personal best
+- Have their personal best persist across sessions via localStorage
 
----
+#### UI & Responsiveness
 
-## 📈 Skor ve LocalStorage Yönetimi
+- View the optimal layout depending on their device's screen size
+- See hover and focus states for all interactive elements
 
-Kullanıcının yaptığı her test sonrasında hesaplanan **WPM** değeri `localStorage` üzerinde güvenli bir şekilde saklanır. Uygulama açıldığında "Personal Best" alanında en yüksek skor gösterilir. Bitiş ekranı şu 3 senaryoya göre dinamik olarak render edilir:
+### Data Model
 
-1. **First Result (`mobile-results-first-test.jpg`):** Kullanıcının sistemdeki ilk testi ise.
-2. **High Score (`mobile-results-new-personal-best.jpg`):** Kullanıcı önceki en iyi WPM skorunu kırdıysa.
-3. **Test Completed (`mobile-results.jpg`):** Standart bitiş ve skor tablosu ekranı.
+A `data.json` file is provided with passages organized by difficulty. Each passage has the following structure:
 
----
-
-## ⚡ Etkileşim ve Durum (State) Efektleri
-
-Uygulama genelindeki tüm butonlar, dropdown menüler ve navbar elementleri responsive bağımsız olarak şu iki tasarım dosyasındaki efektleri miras almalıdır:
-
-- **Focus Efektleri:** Element odaklandığında (tab ile gelindiğinde veya tıklandığında) `focus-states.jpg` görselindeki border/shadow kuralları uygulanır.
-- **Hover Efektleri:** Elementin üzerine gelindiğinde `hover-states.jpg` görselindeki renk değişimleri ve Framer Motion mikro animasyonları tetiklenir.
-
-## 🎨 Stil ve Temalandırma (Tailwind v4)
-
-Projede Tailwind v4 mimarisine uygun olarak CSS tabanlı yapılandırma kullanılmıştır. Yazı tipi olarak `Sora` tercih edilmiş ve tüm hover/focus state'leri tasarım rehberine (`focus-states.jpg`, `hover-states.jpg`) birebir bağlı kalınarak uygulanmıştır.
-
----
-
-## 🛠️ Kurulum ve Çalıştırma
-
-1. Proje bağımlılıklarını yükleyin:
-
-```bash
-npm install
+```json
+{
+  "id": "easy-1",
+  "text": "The sun rose over the quiet town. Birds sang in the trees as people woke up and started their day."
+}
 ```
 
-````
+| Property | Type | Description |
+| --- | --- | --- |
+| `id` | string | Unique identifier for the passage (e.g., "easy-1", "medium-3", "hard-10") |
+| `text` | string | The passage text the user will type |
 
-2. Geliştirme sunucusunu (Vite) başlatın:
+### Expected Behaviors
 
-```bash
-npm run dev
+- **Starting the test**: The timer begins when the user starts typing or clicks the start button. Clicking directly on the passage text and typing also initiates the test
+- **Timed mode**: 60-second countdown. Test ends when timer reaches 0 or passage is completed
+- **Passage mode**: Timer counts up with no limit. Test ends when the full passage is typed
+- **Error handling**: Incorrect characters are highlighted in red with an underline. Backspace allows corrections, but errors still count against accuracy
+- **Results logic**:
+  - First completed test: "Baseline Established!" - sets initial personal best
+  - New personal best: "High Score Smashed!" with confetti animation
+  - Normal completion: "Test Complete!" with encouragement message
 
-```
+### Data Persistence
 
-3. Production derlemesi almak için:
+The personal best score should persist across browser sessions using `localStorage`. When a user beats their high score, the new value should be saved and displayed on subsequent visits.
 
-```bash
-npm run build
+### Want some support on the challenge? 
 
-```
-````
+[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+
+## Where to find everything
+
+Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+
+The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+
+If you would like the Figma design file to gain experience using professional tools and build more accurate projects faster, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+
+All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+
+We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+
+There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+
+## Using AI coding assistants
+
+We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+
+- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
+- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+
+**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+
+**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+
+## Building your project
+
+Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+
+1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
+2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
+3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
+4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
+5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
+6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+
+## Deploying your project
+
+As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+
+- [GitHub Pages](https://pages.github.com/)
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+
+You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+
+## Create a custom `README.md`
+
+We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+
+The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+
+Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+
+## Submitting your solution
+
+Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+
+Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+
+## Sharing your solution
+
+There are multiple places you can share your solution:
+
+1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community). 
+2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
+3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
+4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+
+We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+
+The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+
+## Got feedback for us?
+
+We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+
+This challenge is completely free. Please share it with anyone who will find it useful for practice.
+
+**Have fun building!** 🚀
