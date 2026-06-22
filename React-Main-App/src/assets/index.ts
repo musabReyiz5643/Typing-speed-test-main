@@ -1,0 +1,11 @@
+export const logoSmall = '/assets/logo-small.svg';
+export const logoLarge = '/assets/logo-large.svg';
+export const iconPersonalBest = '/assets/icon-personal-best.svg';
+export const iconCompleted = '/assets/icon-completed.svg';
+export const iconNewPb = '/assets/icon-new-pb.svg';
+export const iconRestart = '/assets/icon-restart.svg';
+export const iconDownArrow = '/assets/icon-down-arrow.svg';
+export const patternConfetti = '/assets/pattern-confetti.svg';
+export const patternStar1 = '/assets/pattern-star-1.svg';
+export const patternStar2 = '/assets/pattern-star-2.svg';
+export const favicon = '/assets/favicon-32x32.png';
